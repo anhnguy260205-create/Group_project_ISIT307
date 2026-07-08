@@ -50,7 +50,7 @@ $overallPoint = $_SESSION["overallPoint"] ?? 0;
 
             <br>
 
-            <button type="submit" name="action" value="exit">
+            <button type="submit">
                 Submit
             </button>
         </div>

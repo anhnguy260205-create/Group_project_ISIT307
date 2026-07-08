@@ -27,7 +27,7 @@ $overallPoint = $_SESSION["overallPoint"] ?? 0;
 
     <p>NickName: <?php echo $_SESSION["nickname"] ?? ""; ?></p>
     <p>Overall Points: <?php echo $_SESSION["overallPoint"] ?? 0; ?></p>
-    <a href="main.php" class="button">Start New Game</a>
+    <a href="index.php" class="button">Start New Game</a>
 
 </div>
 

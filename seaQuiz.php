@@ -79,7 +79,9 @@ $overallPoint = $_SESSION["overallPoint"] ?? 0;
 
         </div>
 
-        <input type="submit" value="Submit">
+        <button type="submit">
+            Submit
+        </button>
 
     </form>
 
