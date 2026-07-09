@@ -1,8 +1,22 @@
+// Notice: the overall point in session does not update in this file.
+// If you want to get the updated overall point, 
+// you should use $overallPoint instead of $_SESSION["overallPoint"] in this file.
 <?php
 session_start();
+// Retrieve the nickname and overall points from the session
 $nickname = $_SESSION["nickname"] ?? "";
-$overallPoint = $_SESSION["overallPoint"] ?? 0;
+$overallPoint = ($_SESSION["overallPoint"] ?? 0) + ($_SESSION["currentPoint"] ?? 0);
+
+if ($_SESSION["from"] == "result")
+{
+    $returnPage = "result.php";
+}
+else
+{
+    $returnPage = "index.php";
+}
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -26,8 +40,9 @@ $overallPoint = $_SESSION["overallPoint"] ?? 0;
     ?>
 
     <p>Not Done Yet</p>
-
-    <a href="result.php" class="button">Return</a>
+    <p>NickName: <?php echo $nickname ?? ""; ?></p>
+    <?php echo "Overall Points: " . $overallPoint; ?>
+    <a href="<?= $returnPage ?>" class="button">Return</a>
 
 </div>
 

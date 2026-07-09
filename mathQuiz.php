@@ -1,7 +1,15 @@
 <?php
 session_start();
+// Update overall points by adding current points from the last quiz and reset current points for the next game
+$_SESSION["overallPoint"] = $_SESSION["overallPoint"] + $_SESSION["currentPoint"];
+$_SESSION["currentPoint"] = 0;
+
+// Retrieve the nickname and overall points from the session
 $nickname = $_SESSION["nickname"] ?? "";
 $overallPoint = $_SESSION["overallPoint"] ?? 0;
+
+// Initialize the answers array in the session
+$_SESSION["answers"] = [];
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,0 +1,6 @@
+1,Shark,False
+2,Sea Turtle,True
+3,Jellyfish,True
+4,Fish,True
+5,Dolphin,False
+6,Cuttlefish,False
