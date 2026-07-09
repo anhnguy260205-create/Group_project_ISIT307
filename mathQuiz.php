@@ -1,4 +1,4 @@
-// For scoring, you only need to store all the currect answers in the $_SESSION["answers"],
+// For scoring, you only need to store all the correct answers in the $_SESSION["answers"],
 // And use the $_POST data to compare with the correct answers in the result.php file.
 // Remember to name the input fields in the quiz form as "q1", "q2", "q3" for the three questions, respectively.
 <?php
