@@ -4,3 +4,5 @@ as,0
 we,-1
 asd,1
 asd,-6
+kim,8
+Kim,-2

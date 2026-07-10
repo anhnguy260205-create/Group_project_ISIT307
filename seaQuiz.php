@@ -33,7 +33,7 @@ $quizData = file("data/seaQuiz.txt");
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body style="margin-top:10px">
 
     <div class="container">
 

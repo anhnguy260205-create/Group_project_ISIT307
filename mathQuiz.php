@@ -31,7 +31,7 @@ $quizData = file("data/mathQuiz.txt");
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body style=" margin-top: 90px;">
 
     <div class="container">
 

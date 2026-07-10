@@ -1,14 +1,14 @@
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
-    text-align:center;
-    margin-top:60px;
+    text-align: center;
+    margin-top: 200px;
 }
 
-.container{
-    width:320px;
-    margin:auto;
-    border:1px solid black;
-    padding:20px;
+.container {
+    width: 320px;
+    margin: auto;
+    border: 1px solid black;
+    padding: 20px;
 }
 
 input[type="text"],
@@ -24,16 +24,16 @@ input[type="radio"] {
     margin: 0;
 }
 
-button{
-    width:220px;
-    padding:10px;
-    margin:8px;
-    font-size:16px;
+button {
+    width: 220px;
+    padding: 10px;
+    margin: 8px;
+    font-size: 16px;
 }
 
-.error{
-    color:red;
-    margin-bottom:15px;
+.error {
+    color: red;
+    margin-bottom: 15px;
 }
 
 .radio-group {
