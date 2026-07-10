@@ -3,7 +3,7 @@
 session_start();
 
 // Update overall points by adding current points from the last quiz and reset current points for the next game
-$_SESSION["overallPoint"] = $_SESSION["overallPoint"] + $_SESSION["currentPoint"];
+$_SESSION["overallPoint"] = ($_SESSION["overallPoint"] ?? 0) + ($_SESSION["currentPoint"] ?? 0);
 $_SESSION["currentPoint"] = 0;
 
 // Retrieve the nickname and overall points from the session
@@ -27,40 +27,40 @@ $quizData = file("data/seaQuiz.txt");
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Sea World Quiz</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h2>Sea World Quiz</h2>
+        <h2>Sea World Quiz</h2>
 
-    <?php
-    if(isset($error)){
-        echo "<div class='error'>$error</div>";
-    }
-    ?>
+        <?php
+        if (isset($error)) {
+            echo "<div class='error'>$error</div>";
+        }
+        ?>
 
-    <form method="post" action="result.php">
+        <form method="post" action="result.php">
 
-        <!-- Loop for 3 random questions displaying -->
-        <div class="question">
-            <?php 
+            <!-- Loop for 3 random questions displaying -->
+            <div class="question">
+                <?php
                 for ($i = 0; $i < count($randomQuestions); $i++) {
                     // Display the question number and the corresponding image
                     echo "<label>Question " . ($i + 1) . "</label> <br>";
                     echo "<img src='img/" . $randomQuestions[$i] . ".png' width='200'>";
-                    foreach($quizData as $line)
-                    {
-                        $question = explode(",",trim($line));
+                    foreach ($quizData as $line) {
+                        $question = explode(",", trim($line));
                         // Check if the question number matches the random question number
-                        if($question[0] == $randomQuestions[$i])
-                        {
+                        if ($question[0] == $randomQuestions[$i]) {
                             // Display the question text and store the answer in the session
                             echo "<p style='font-size: 16px; margin: 4px 0 6px; line-height: 1.1;'>"
-                             . $question[1] . "</p>";
+                                . $question[1] . "</p>";
                             $_SESSION["answers"][] = $question[2];
                         }
                     }
@@ -76,16 +76,17 @@ $quizData = file("data/seaQuiz.txt");
                         </label>
                     </div>";
                 }
-            ?>
+                ?>
 
-        <button type="submit">
-            Submit
-        </button>
+                <button type="submit">
+                    Submit
+                </button>
 
-    </form>
+        </form>
 
 
-</div>
+    </div>
 
 </body>
+
 </html>

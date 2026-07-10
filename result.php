@@ -41,12 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION["currentPoint"] = 0;
     $_SESSION["numCorrect"] = 0;
     $_SESSION["numIncorrect"] = 0;
-    
+
     // Loop through the answers and calculate the score
     for ($i = 0; $i < count($answers); $i++) {
         $userAnswer = $_POST["q" . ($i + 1)] ?? null;
-
-        if ($userAnswer !== null && (string)$userAnswer === (string)$answers[$i]) {
+        if ($userAnswer !== null && (string) $userAnswer === (string) $answers[$i]) {
             $_SESSION["currentPoint"] += 3;
             $_SESSION["numCorrect"]++;
         } else {
@@ -62,7 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $overallPoint = ($_SESSION["overallPoint"] ?? 0) + $currentPoint;
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -73,50 +71,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h2>Result</h2>
-    
-    <?php
-    // Display error message if any
-    if(isset($error)){
-        echo "<div class='error'>$error</div>";
-    }
-    ?>
+        <h2>Result</h2>
 
-    <p>Num of Correct Answers: <?php echo $numCorrect ?? 0; ?></p>
-    <p>Num of Incorrect Answers: <?php echo $numIncorrect ?? 0; ?></p>
-    <p>Current Points: <?php echo $currentPoint ?? 0; ?></p>
-    <p>Overall Points: <?php echo $overallPoint ?? 0; ?></p>
-    <hr>
+        <?php
+        // Display error message if any
+        if (isset($error)) {
+            echo "<div class='error'>$error</div>";
+        }
+        ?>
 
-    <form method="post">
+        <p>Num of Correct Answers: <?php echo $numCorrect ?? 0; ?></p>
+        <p>Num of Incorrect Answers: <?php echo $numIncorrect ?? 0; ?></p>
+        <p>Current Points: <?php echo $currentPoint ?? 0; ?></p>
+        <p>Overall Points: <?php echo $overallPoint ?? 0; ?></p>
+        <hr>
 
-        <button type="submit" name="action" value="math">
-            Math Quiz
-        </button>
+        <form method="post">
 
-        <br>
+            <button type="submit" name="action" value="math">
+                Math Quiz
+            </button>
 
-        <button type="submit" name="action" value="sea">
-            Sea Animal Quiz
-        </button>
+            <br>
 
-        <br>
+            <button type="submit" name="action" value="sea">
+                Sea Animal Quiz
+            </button>
 
-        <button type="submit" name="action" value="leaderboard">
-            Leaderboard
-        </button>
+            <br>
 
-        <br>
+            <button type="submit" name="action" value="leaderboard">
+                Leaderboard
+            </button>
 
-        <button type="submit" name="action" value="exit">
-            Exit
-        </button>
+            <br>
 
-    </form>
+            <button type="submit" name="action" value="exit">
+                Exit
+            </button>
 
-</div>
+        </form>
+
+    </div>
 
 </body>
 
