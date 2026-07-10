@@ -16,10 +16,24 @@ $_SESSION["answers"] = [];
 // Retrieve the nickname and overall points from the session
 $nickname = $_SESSION["nickname"] ?? "";
 $overallPoint = $_SESSION["overallPoint"] ?? 0;
-// Format the data to be saved in the leaderboard file
-$data = $nickname . "," . $overallPoint . "\n";
-// Save the nickname and overall points to the leaderboard file
-file_put_contents("data/leaderBoard.txt", $data, FILE_APPEND);
+
+// Read the leaderBoard.txt file 
+$leaderBoard = file("data/leaderBoard.txt");
+$found = false;
+$newData = "";
+foreach ($leaderBoard as $row) {
+    $line = explode(",", trim($row));
+
+    if ($nickname == $line[0]) {
+        $line[1] += $overallPoint;
+        $found = true;
+    }
+    $newData .= $line[0] . "," . $line[1] . "\n";
+}
+if (!$found) {
+    $newData .= $nickname . "," . $overallPoint . "\n";
+}
+file_put_contents("data/leaderBoard.txt", $newData);
 ?>
 
 <!DOCTYPE html>
