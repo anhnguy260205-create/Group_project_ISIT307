@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
 
             case "leaderboard":
-                $_SESSION["from"] = "index";
+                $_SESSION["from"] = "index.php";
                 header("Location: leaderboard.php");
                 exit();
 

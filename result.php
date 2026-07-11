@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
 
             case "leaderboard":
-                $_SESSION["from"] = "result";
+                $_SESSION["from"] = "result.php";
                 header("Location: leaderboard.php");
                 exit();
 
