@@ -51,24 +51,6 @@ $found = false;
                     "score" => $line[1]
                 ];
             }
-            // Check if user click either sort_name or sort_score button
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                switch ($_POST["sort"]) {
-                    case "sort_name":
-                        // Sort players by their name 
-                        usort($players, function ($a, $b) {
-                            return strcasecmp(trim($a["name"]), trim($b["name"]));
-                        });
-                        break;
-                    case "sort_score":
-                        // Sort players by their score
-                        usort($players, function ($a, $b) {
-                            return $b["score"] - $a["score"];// descending: highest score first
-                        });
-                        break;
-
-                }
-            }
         }
 
         if ($found == false) {
@@ -77,7 +59,23 @@ $found = false;
                 "name" => $nickname,
                 "score" => $overallPoint
             ];
-        }    
+        }
+
+        // Sort after the full player list is built, so newly added users are included.
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sort"])) {
+            switch ($_POST["sort"]) {
+                case "sort_name":
+                    usort($players, function ($a, $b) {
+                        return strcasecmp(trim($a["name"]), trim($b["name"]));
+                    });
+                    break;
+                case "sort_score":
+                    usort($players, function ($a, $b) {
+                        return $b["score"] - $a["score"]; // descending: highest score first
+                    });
+                    break;
+            }
+        }
         
         foreach ($players as $player) {
             echo "<p>" . htmlspecialchars($player["name"]) . " : " . htmlspecialchars($player["score"]) . "</p>";
