@@ -1,3 +1,4 @@
-kim,-8
+kim,1
 ABC,-17
 XYSQW,-20
+Kim,13
